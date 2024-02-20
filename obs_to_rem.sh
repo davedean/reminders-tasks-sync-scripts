@@ -47,13 +47,19 @@ for task in $tasks ; do
     taskname_noid=$(echo $taskname | sed 's/ id:.*//g')
     if echo $reminders_completed $reminders_incomplete | grep -q $taskname_noid ; then
       #echo "untagged $taskname exists, need to add id manually in reminders for now"
-      line=$(reminders show "$listname" | grep $taskname_noid | cut -d : -f 1)
+      line=$(reminders show-all | grep $taskname_noid | cut -d : -f 1)
       index=$(echo $line | cut -d : -f 2)
       list=$(echo $line | cut -d : -f 1)
 
       reminders edit "$list" "${index}" "$taskname"
     else
-      reminders add $listname $taskname ${priority_opt}
+      if [ "$listname" == "all" ] ; then 
+        list="Inbox"
+      else
+        list=${listname}
+      fi
+
+      reminders add $list $taskname ${priority_opt}
     fi
   fi
 
