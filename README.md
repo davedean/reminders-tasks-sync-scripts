@@ -1,6 +1,10 @@
 # reminders-tasks-sync-scripts
 Sync obsidian tasks and Apple Reminders
 
+
+## THIS IS VERY ALPHA DO NOT USE ##
+
+
 Have needed this for a while, but kept over-doing it. 
 
 These scripts are an attempt to keep things "mostly simple".
